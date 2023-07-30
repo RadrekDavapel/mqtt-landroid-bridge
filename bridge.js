@@ -96,6 +96,8 @@
 						adapter.log.info('Topic '+device.topic+' sucessfully connected with local MQTT-Server');
 						clientStatus = true;
 						setOnlineStatus(device, device['online']);
+					}else{
+						adapter.log.error('Fail connect to local MQTT-Server');
 					}
 				});
 			});
@@ -120,7 +122,11 @@
 					}
 				}
 			});
-		})
+		});
+
+		client.on('error', function(error)){
+			 adapter.log.info('Local MQTT-Server connection error '+error);
+		}
 
 		worxCloud = new worx(adapter);
 
