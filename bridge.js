@@ -124,9 +124,9 @@
 			});
 		});
 
-		client.on('error', function(error)){
+		client.on('error', function(error){
 			 adapter.log.info('Local MQTT-Server connection error '+error);
-		}
+		});
 
 		worxCloud = new worx(adapter);
 
